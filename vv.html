@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="vv.css">
+    <script src="vv.js"></script>
+    <link rel="shortcut icon" href="/img/m.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><!--for google font and icon library-->
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="wrapper">
+        <div class="top-bar">
+            <i class="material-icons">expand_more</i>
+            <span>Now Playing</span>
+            <i class="material-icons" id="show-playlist">playlist_play</i>
+        </div>
+        <div class="img-area">
+            <img src="/img/lofi2.jpg" alt="Album Art">
+        </div>
+        <div class="song-details">
+            <p class="name">Conte D'une Nuit D'hiver</p>
+            <p class="artist">Dimension 32 & Quantum Break</p>
+        </div>
+        <div class="progress-area">
+            <div class="progress-bar">
+                <span></span>
+            </div>
+            <div class="timer">
+                <span class="current">0:00</span>
+                <span class="duration">3:40</span>
+            </div>
+        </div>
+        <!--speed controling of song-->
+        <div class="speed-control">
+            <label for="speed"></label>
+            <select id="speed">
+                <option value="0.5">0.5x</option>
+                <option value="1" selected>1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="1.75" selected>1.75x</option>
+                <option value="2">2x</option>
+            </select>
+        </div>
+       <!--basic controls left right repeat play-pause song-->
+        <div class="controls">
+            <i id="repeat-plist" class="material-icons">repeat</i>
+            <i id="prev" class="material-icons">skip_previous</i>
+            <div class="play-pause">
+               <i class="material-icons" id="play-pause">play_arrow</i>
+            </div>
+            <i id="next" class="material-icons">skip_next</i>
+            <i id="more-music" class="material-icons">queue_music</i>
+        </div>
+        
+       <!--Music list making with artist name and title of song-->
+        <div class="music-list">
+            <div class="header">
+                <div class="row">
+                    <i class="material-icons">playlist_play</i>
+                    <span>Music list</span>
+                </div>
+                <i id="close-playlist" class="material-icons">close</i>
+            </div>
+            <ul id="playlist">
+                <li data-src="/audios/audio_1.mp3" data-img="/img/lofi2.jpg">
+                    <div class="row">
+                        <span>Title: Conte D'une Nuit</span>
+                        <p>Artist: Dimension 32 & Quantum Break </p>
+                    </div>
+                    <span class="audio-duration">02:15</span>
+                </li>
+                <li data-src="/audios/audio_2.mp3" data-img="/img/lilac.jpg">
+                    <div class="row">
+                        <span>Title: Lilac </span>
+                        <p> Artist: G Mills</p>
+                    </div>
+                    <span class="audio-duration">2:40</span>
+                </li>
+                <li data-src="/audios/audio_3.mp3" data-img="/img/lofi.jpg">
+                    <div class="row">
+                        <span>Title: Sleep Music</span>
+                        <p> Artist: Relaxing Sleep Music</p>
+                    </div>
+                    <span class="audio-duration">3:01:43</span>
+                </li>
+                <li data-src="/audios/audio_4.mp3" data-img="/img/melody.png">
+                    <div class="row">
+                        <span>Title: Enchanted Melody</span>
+                        <p> Artist: Dimension 32</p>
+                    </div>
+                    <span class="audio-duration">2:33</span>
+                </li>
+                <li data-src="/audios/audio_5.mp3" data-img="/img/lofi5.jpg">
+                    <div class="row">
+                        <span>Title: Precarious</span>
+                        <p> Artist: RefraQ</p>
+                    </div>
+                    <span class="audio-duration">2:33</span>
+                </li>
+                <li data-src="/audios/audio_6.mp3" data-img="/img/melody.png">
+                    <div class="row">
+                        <span>Title: Orpheus</span>
+                        <p> Artist: Dimension 32</p>
+                    </div>
+                    <span class="audio-duration">2:33</span>
+                </li>
+                <!-- for Add more songs as needed -->
+            </ul>
+        </div>
+    </div>
+   
+</body>
+</html>

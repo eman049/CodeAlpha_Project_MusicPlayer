@@ -1,0 +1,322 @@
+/* Css file  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+*::before, *::after {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --orange: #eb672b;
+    --violet: #850fce;
+    --lightblack: #515C6F;
+    --white: #ffffff;
+    --darkwhite: #cecaca;
+    --p_shadow: #c02dec;
+    --lightbshadow: rgba(0,0,0,0.15);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.background-image {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* -1 for place behind other elements */
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    filter: blur(7px); /*  blur background image */
+    -webkit-filter: blur(7px);
+}
+
+.wrapper {
+    width: 380px;
+    border-radius: 15px;
+    padding: 25px 30px;
+    background:var(--white);
+    box-shadow: 0px 6px 15px var(--p_shadow);
+    position: relative;
+}
+
+.wrapper i {
+    cursor: pointer;
+}
+
+.top-bar, .progress-area .timer, .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-bar i {
+    font-size: 30px;
+    color: var(--orange,--violet);
+}
+
+.top-bar span {
+    font-size: 18px;
+    color: var(--lightblack);
+}
+/* styling for img with in wrapper */
+.img-area {
+    height: 190px;
+    width: 100%;
+    margin-top: 25px;
+    overflow: hidden;
+    border-radius: 19px;
+    box-shadow: 0px 5px 12px var(--p_shadow);
+}
+
+.img-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.song-details {
+    text-align: center;
+    margin: 10px 0;
+    margin: 30px 0;
+    color: var(--lightblack);
+}
+
+.song-details .name {
+    font-size: 18px;
+}
+
+.song-details .artist {
+    opacity: 0.9;
+    font-size: 15px;
+}
+/* styling of progress bar*/
+.progress-area {
+    height: 6px;
+    margin-left: 30px;
+    width: 80%;
+    background: #a8a7a7;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative; 
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0; /* Start at 0 width and update via JS */
+    position: absolute; 
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--violet) 100%);
+}
+
+.progress-bar::before {
+    content: "";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    background: inherit; 
+    border-radius: 50%;
+    top: 50%;
+    right: -6px; 
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+}
+
+.progress-area:hover .progress-bar::before {
+    opacity: 1;
+}
+
+.timer span {
+    font-size: 15px;
+    margin-top: 15px;
+    color: var(--lightblack);
+}
+/* speed control styling */
+.speed-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 250px;
+    color: var(--p_shadow);
+}
+
+.speed-control label {
+    margin-right: 1px;
+    font-size: 14px;
+}
+
+.speed-control select {
+    padding: 0.5px 1px;
+    font-size: 15px;
+    color: var(--white);
+    border-radius: 15px;
+    border: 3px outset var(--p_shadow);
+    background:linear-gradient(90deg, var(--orange) 0%, var(--violet) 100%);;
+    outline: none;
+    background-color: #bf2dec56;
+}
+
+.speed-control select:hover {
+    border-color: var(--orange);
+}
+
+
+.controls {
+    margin: 25px 0 5px 0;
+}
+
+.controls i {
+    font-size: 28px;
+    user-select: none;
+    background: linear-gradient(var(--orange) 0%, var(--violet) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.controls i:nth-child(2), 
+.controls i:nth-child(4) {
+    font-size: 43px;
+}
+
+.controls #prev {
+    margin-right: -13px;
+}
+
+.controls #next {
+    margin-left: -15px;
+}
+
+.controls .play-pause {
+    height: 54px;
+    width: 54px;
+    background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
+    box-shadow: 0px 0px  5px var(--orange); 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-pause::before {
+    content:"";
+    position: absolute;
+    height: 43px;
+    width: 43px;
+    border-radius: inherit;
+    background: linear-gradient(var(--orange) 0%, var(--violet) 100%);
+}
+
+.play-pause i {
+    height: 43px;
+    width: 43px;
+    line-height: 43px;
+    text-align: center;
+    border-radius: inherit;
+    background-clip: text;
+    background: inherit;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Style for the music list within the wrapper */
+.music-list {
+    display: none;
+    position: absolute; /* Position it inside the wrapper */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: var(--white);
+    box-shadow: 0px -6px 12px var(--p_shadow);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 15px 30px;
+    overflow-y: auto; /* for enable scrolling  */
+}
+/* Show the playlist when open */
+.music-list.open {
+    display: block;
+}
+
+.music-list .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.music-list .header .row {
+    display: flex;
+    align-items: center;
+}
+
+.music-list .header i {
+    font-size: 24px;
+    color: var(--orange);
+}
+
+.music-list .header span {
+    font-size: 18px;
+    color: var(--orange);
+    margin-left: 10px;
+}
+
+.music-list .header #close-playlist {
+    font-size: 24px;
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.music-list ul {
+    list-style: none;
+    max-height: 80%;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(255, 244, 250);
+}
+
+.music-list ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ff9a28f8;
+}
+
+.music-list ul li .row {
+    display: flex;
+    flex-direction: column;
+}
+/* styling for  title of song*/
+.music-list ul li .row span {
+    font-size: 16px;
+    color: rgb(199, 31, 177);
+}
+/* styling for artist name */
+.music-list ul li .row p {
+    font-size: 14px;
+    color:rgb(238, 103, 220);
+}
+/* styling for duration of song */
+.music-list ul li .audio-duration {
+    font-size: 14px;
+    color: rgb(228, 96, 210);
+}
